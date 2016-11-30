@@ -1,0 +1,20 @@
+Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
+        , borderColor = "black"
+        , border = TopB
+        , bgColor = "black"
+        , fgColor = "grey"
+        , position = TopW L 100
+        , commands = 
+            [     Run Com "/home/user/.system/get-weather.sh" ["XXXXX"] "weather" 36000
+                , Run Date "%a %b %_d %Y %H:%M" "date" 30
+    			, Run Com "/home/user/.system/wireless-status.sh" [] "wifi" 60
+    			, Run Battery ["-t", "<acstatus> <left>%", "-L", "10", "-H", "80", "-p", "3",
+                               "--", "-O", "Charger -", "-i", "", "-o", "Battery -",
+    			               "-L", "-15", "-H", "-5", "-l", "red", "-m", "blue", "-h", "green"] 120
+                , Run StdinReader
+    			, Run Com "/home/user/.system/get-volume.sh" [] "volume" 10
+            ]
+        , sepChar = "%"
+        , alignSep = "}{"
+        , template = "%StdinReader% }{<fc=#ee9a00>%date%</fc> | Weather: %weather% | Wifi: %wifi% | Vol: %volume% | %battery% "
+        }
