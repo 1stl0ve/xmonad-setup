@@ -10,6 +10,12 @@ echo "[+] Generating configuration files"
 USER=`whoami`
 awk -v user="$USER" '{gsub("user", user)}1' .xmobarrc_template > .xmobarrc
 
+# Get weather information
+echo "[!] What is your zip code?"
+read ZIP 
+echo "[+] Setting local weather zip code to $ZIP"
+sed -i "s/XXXXX/$ZIP/g" .xmobarrc
+
 # Copy configuration files to the appropriate places
 cp .xmobarrc ~/
 rm .xmobarrc
@@ -26,4 +32,3 @@ echo "[+] Starting XMonad"
 xmonad --recompile
 xmonad --restart
 
-echo "[!] Edit ~/.xmobarrc and change XXXXX to your zip code for local weather and run xmonad --restart"
