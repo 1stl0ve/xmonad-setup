@@ -20,4 +20,4 @@ The bar contains useful information about the system:
 - Battery charge
 
 ## Configuring weather
-Note that the user has to manually edit `~/.xmobarrc` and change `XXXXX` to their zip code for weather data.
+The user will be prompted for their zip code when running `./setup.sh`. This will automaticlaly be inserted into `~/.xmobarrc`.
