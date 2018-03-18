@@ -23,8 +23,8 @@ main = do
         } 
         `additionalKeys`
         [     ((0, 0x1008FF12), spawn (system ++ "mute-volume.sh"))
-            , ((0 , 0x1008FF11), lowerVolume 4 >> return ())
-            , ((0 , 0x1008FF13), raiseVolume 4 >> return ())
+            , ((0 , 0x1008FF11), lowerVolume 4 >> spawn (system ++ "notify-volume.py"))
+            , ((0 , 0x1008FF13), raiseVolume 4 >> spawn (system ++ "notify-volume.py"))
             , ((0 , 0x1008FF16), spawn (music ++ "Previous"))
             , ((0 , 0x1008FF17), spawn (music ++ "Next"))
         ]
