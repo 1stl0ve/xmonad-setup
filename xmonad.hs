@@ -29,6 +29,6 @@ main = do
             , ((0 , 0x1008FF17), spawn (music ++ "Next"))
         ]
         `additionalKeysP`
-        [     ("C-S-l", spawn "gnome-screensaver-command --lock")
-            , ("<XF86AudioPlay>", spawn (music ++ "PlayPause"))
+        [     
+            ("<XF86AudioPlay>", spawn (music ++ "PlayPause"))
         ]
